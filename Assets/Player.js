@@ -6,12 +6,22 @@ var grounded:boolean;
 var end: Transform; 
 var Dis: UI.Text;
 var win: GameObject;
+var Compass: GameObject;
+
+var rot: GameObject[];
 
 function Start () {
 
 }
 
 function Update () {
+	for(var item : GameObject in rot)
+    {
+        item.transform.Rotate(Vector3.up * 50 *Time.deltaTime);
+    }
+
+	Compass.transform.LookAt(end);
+
 	var dist = Vector3.Distance(end.position, transform.position);
 	Dis.text = dist.ToString("F0");
 
